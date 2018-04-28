@@ -1,0 +1,73 @@
+/*
+本css针对项目中用到的重复css提取减少css冗余程度；
+和rest.css一样引入main.js即可；
+*/
+
+
+/* 浮动处理 */
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.cleafix {
+  overflow: hidden;
+}
+
+
+
+/* 字体处理 */
+
+.fz16 {
+  font-size: 0.16rem;
+}
+
+.fz18 {
+  font-size: 0.18rem;
+}
+
+.fz24 {
+  font-size: 0.24rem;
+}
+
+.fz30 {
+  font-size: 0.3rem;
+}
+
+.fz36 {
+  font-size: 0.36rem;
+}
+
+
+
+
+/* padding值处理 */
+
+
+/* margin值处理 */
+
+
+/* 自定义样式处理 */
+.t_info {
+  text-align: center;
+  color: #ff9933;
+  padding: 0.3rem 0;
+}
+
+.btn {
+    border: none;
+    text-align: center;
+    width: 3rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    font-size: 0.36rem;
+    background: #ff9966;
+    color: #fff;
+    border-radius: 3px;
+    margin: 0 auto;
+    display: block;
+  }
