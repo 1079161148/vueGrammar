@@ -2,7 +2,7 @@
   <div class="content">
     <p class="fz36 t_info">{{title}}</p>
       <yd-scrolltab>
-        <yd-scrolltab-panel  :label="item.name" icon="demo-icons-category1" v-for="item in list">
+        <yd-scrolltab-panel  :label="item.name" icon="demo-icons-category1" v-for="(item,index) in list"  :key="index">
           <div style="height: 350px;background-color: gray;"></div>
         </yd-scrolltab-panel>
         <!-- <yd-scrolltab-panel label="冰箱" icon="demo-icons-category2" active>

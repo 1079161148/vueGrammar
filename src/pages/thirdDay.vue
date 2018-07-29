@@ -2,13 +2,13 @@
   <div class="third_box">
     <p class="fz36 t_info">Vue全局API</p>
     <ul>
-      <li v-for="item in list">{{item}}</li>
+      <li v-for="(item,index) in list" :key="index">{{item}}</li>
     </ul>
     <ul>
-      <li v-for="item in list2">{{item}}</li>
+      <li v-for="(item,index) in list2" :key="index">{{item}}</li>
     </ul>
     <ul>
-      <li v-for="item in list1">
+      <li v-for="(item,index) in list1" :key="index">
         <span>{{item.name}}</span>
         <span>{{item.sex}}</span>
       </li>

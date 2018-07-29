@@ -1,13 +1,8 @@
 <template>
-    <div>
-    <!-- <p class="fz36 t_info">{{title}}</p> -->
-     <yd-rollnotice autoplay="2000">
-        <yd-rollnotice-item><span style="color:#F00;"> 荐 </span>荣耀V9 3月超级钜惠！</yd-rollnotice-item>
-        <yd-rollnotice-item><span style="color:#F00;"> 荐 </span>3.23京东超级品牌日格力盛典</yd-rollnotice-item>
-        <yd-rollnotice-item><span style="color:#F00;"> 荐 </span>京东服饰 早春新品低至7折</yd-rollnotice-item>
-    </yd-rollnotice>
-    <yd-pullrefresh :callback="loadList" ref="pullrefreshDemo">
-      <yd-list theme="4">
+  <div class="content">
+    <p class="fz36 t_info">{{title}}</p>
+    <yd-infinitescroll :callback="loadList" ref="infinitescrollDemo">
+      <yd-list theme="1" slot="list">
         <yd-list-item v-for="item, key in list" :key="key">
           <img slot="img" :src="item.img">
           <span slot="title">{{item.title}}</span>
@@ -20,15 +15,20 @@
           </yd-list-other>
         </yd-list-item>
       </yd-list>
-    </yd-pullrefresh>
-    </div>
+      <!-- 数据全部加载完毕显示 -->
+      <span slot="doneTip">啦啦啦，啦啦啦，没有数据啦~~</span>
+      <!-- 加载中提示，不指定，将显示默认加载中图标 -->
+      <img slot="loadingTip" src="http://static.ydcss.com/uploads/ydui/loading/loading10.svg" />
+    </yd-infinitescroll>
+  </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      title: '我是动态组件渲染的第二个组件内容',
+      title: '我是动态组件渲染的第三个组件内容',
       page: 1,
+      pageSize: 10,
       list: [{
           img: "http://img1.shikee.com/try/2016/06/23/14381920926024616259.jpg",
           title: "标题标题标题标题标题",
@@ -68,16 +68,26 @@ export default {
       ]
     }
   },
+  created() {
+
+  },
   methods: {
     loadList() {
-      let url = 'http://list.ydui.org/getdata.php';
-      this.$http.jsonp(url, { params: { type: 'pulldown', page: this.page } }).then((response) => {
+      this.$http.jsonp('http://list.ydui.org/getdata.php?type=backposition', {
+        params: {
+          page: this.page,
+          pagesize: this.pageSize
+        }
+      }).then(function(response) {
         let _list = response.body;
-        this.list = [..._list, ...this.list];
-        this.$dialog.toast({
-          mes: _list.length > 0 ? '为您更新了' + _list.length + '条内容' : '已是最新内容'
-        });
-        this.$refs.pullrefreshDemo.$emit('ydui.pullrefresh.finishLoad');
+        this.list = [...this.list, ..._list];
+        if (_list.length < this.pageSize || this.page == 3) {
+          /* 所有数据加载完毕 */
+          this.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.loadedDone');
+          return;
+        }
+        /* 单次请求数据完毕 */
+        this.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.finishLoad');
         this.page++;
       });
     }
@@ -87,5 +97,7 @@ export default {
 </script>
 <style lang="less" scoped>
 
-
+.yd-list-other{
+  font-size: 16px;
+}
 </style>

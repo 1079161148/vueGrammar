@@ -9,7 +9,7 @@
     <p class="fz36 t_info">{{3+'a'}}</p>
     <!-- 支持字符串拼接 -->
     <ul>
-      <li v-for="(item,index) in list">
+      <li v-for="(item,index) in list" :key="index">
         <!-- 遍历数组 -->
         <P>{{item.name}}---{{getIndex(index)}}</P>
         <P>{{getId(item.pId)}}</P>
