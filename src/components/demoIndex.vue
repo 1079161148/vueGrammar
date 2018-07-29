@@ -21,9 +21,10 @@ export default {
         { lensson: '第五课', name: 'vue生命周期', page: 5 },
         { lensson: '第六课', name: 'vue插槽', page: 6 },
         { lensson: '第七课', name: '动态组件', page: 7 },
-        { lensson: '第八课',name:'vue过渡和动画介绍',page:8 },
-        { lensson: '第九课',name:'VueLazyload懒加载',page:9},
-        { lensson: '第十课' }
+        { lensson: '第八课', name: 'vue过渡和动画介绍', page: 8 },
+        { lensson: '第九课', name: 'VueLazyload懒加载', page: 9 },
+        { lensson: '第十课', name: 'ydui大图预览效果', page: 10 },
+        { lensson: '第十一课', name: 'tab效果(ydui)异步数据', page: 11 },
       ],
       tips: '点击对应的书签页进入对应的知识点demo'
     }
@@ -48,12 +49,15 @@ export default {
         this.go('soltFater')
       } else if (lensson == '第七课') {
         this.go('dynamicComponents')
-      }else if(lensson == '第八课'){
+      } else if (lensson == '第八课') {
         this.go('eightDay')
-      }else if(lensson == '第九课'){
+      } else if (lensson == '第九课') {
         this.go('imgLazyLoad')
+      } else if (lensson == '第十课') {
+        this.go('imgPreview')
+      } else if (lensson == '第十一课') {
+        this.go('tabSyncData')
       }
-
     },
     go(pathName) {
       this.$router.push({ name: pathName, query: { hello: 'vuejs' } })

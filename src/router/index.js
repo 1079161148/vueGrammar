@@ -48,7 +48,15 @@ const router = new Router({
   }, {
     path: '/imglazyload',
     name: 'imgLazyLoad',
-    component: resolve => require(['@/pages/imgLazyLoad'], resolve)
+    component: resolve => require(['@/pages/imgLazyLoad'], resolve)  //vuelazyload插件使用图片懒加载
+  }, {
+    path: '/imgpreview',
+    name: 'imgPreview',
+    component: resolve => require(['@/pages/imgPreview'], resolve)  //大图预览效果（图片预览）;
+  }, {
+    path: '/tabsyncdata',
+    name: 'tabSyncData',
+    component: resolve => require(['@/pages/tabSyncData'], resolve)  //选项卡功能tab切换异步数据
   }]
 })
 
