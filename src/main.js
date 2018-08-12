@@ -7,6 +7,8 @@ import store from './store'
 import YDUI from 'vue-ydui';
 import 'vue-ydui/dist/ydui.rem.css'
 import VueLazyload from 'vue-lazyload' //图片懒加载
+import  './http/mock.js' //mockjs
+
 Vue.use(VueLazyload)
 // or with options
 Vue.use(VueLazyload, {

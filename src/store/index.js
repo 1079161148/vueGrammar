@@ -2,14 +2,16 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import actions from './actions'
 import mutations from './mutations.js'
+import createLogger from 'vuex/dist/logger'; // 修改日志
 
 Vue.use(Vuex) //使用Vuex
-
+const debug = process.env.NODE_ENV !== 'production'; // 开发环境中为true，否则为false
 export default new Vuex.Store({
     modules:{   //mutation本身是一个模块,
         mutations
     },
-    actions
+    actions,
+    plugins: debug ? [createLogger()] : [] // 开发环境下显示vuex的状态修改
 })
 
 /*

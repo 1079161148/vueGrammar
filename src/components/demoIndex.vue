@@ -25,6 +25,7 @@ export default {
         { lensson: '第九课', name: 'VueLazyload懒加载', page: 9 },
         { lensson: '第十课', name: 'ydui大图预览效果', page: 10 },
         { lensson: '第十一课', name: 'tab效果(ydui)异步数据', page: 11 },
+        { lensson: '第十二课', name: 'mock数据', page: 12 },
       ],
       tips: '点击对应的书签页进入对应的知识点demo'
     }
@@ -57,6 +58,8 @@ export default {
         this.go('imgPreview')
       } else if (lensson == '第十一课') {
         this.go('tabSyncData')
+      } else if (lensson == '第十二课') {
+        this.go('mockData')
       }
     },
     go(pathName) {

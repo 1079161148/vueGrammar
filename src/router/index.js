@@ -57,6 +57,10 @@ const router = new Router({
     path: '/tabsyncdata',
     name: 'tabSyncData',
     component: resolve => require(['@/pages/tabSyncData'], resolve)  //选项卡功能tab切换异步数据
+  }, {
+    path: '/mockdata',
+    name: 'mockData',
+    component: resolve => require(['@/pages/mockData'], resolve)  //mockjs用法
   }]
 })
 
